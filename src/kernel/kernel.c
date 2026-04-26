@@ -2,6 +2,14 @@
 #include "../drivers/keyboard.h"
 #include "../../include/standart.h"
 
+int strcmp(const char *a, const char *b) {
+    while (*a && (*a == *b)) {
+        a++;
+        b++;
+    }
+    return *(unsigned char*)a - *(unsigned char*)b;
+}
+
 void kernel_main() {
     clear();
 
@@ -24,15 +32,21 @@ void kernel_main() {
                 continue;
             }
 
-            int found = 0;
+            // parse command
+            char command[64];
+            int i = 0;
 
-            if (index == 4 &&
-                buffer[0]=='i' &&
-                buffer[1]=='n' &&
-                buffer[2]=='f' &&
-                buffer[3]=='o') {
+            while (buffer[i] != ' ' && buffer[i] != '\0') {
+                command[i] = buffer[i];
+                i++;
+            }
+            command[i] = '\0';
 
-                found = 1;
+            char *args = buffer + i;
+            if (*args == ' ') args++;
+
+            // commands
+            if (strcmp(command, "info") == 0) {
 
                 print("Distro: \"");
                 print(DISTRO);
@@ -45,37 +59,41 @@ void kernel_main() {
                 print("Authors: \"");
                 print(AUTHORS);
                 print("\"\n");
-            } else if ( buffer[0]=='e' &&
-                buffer[1]=='c' &&
-                buffer[2]=='h' &&
-                buffer[3]=='o' &&
-		buffer[4]==' ' &&
-		buffer[5]!='\0') {
 
-                found = 1;
+            } else if (strcmp(command, "echo") == 0) {
 
-                print(buffer + 5);
-		print("\n");
-            }
+                print(args);
+                print("\n");
 
-            if (!found) {
+            } else if (strcmp(command, "off") == 0) {
+
+                print("You can safely turn off your PC now.\n");
+
+                asm volatile("cli");
+                while (1) asm volatile("hlt");
+
+            } else {
                 print("standart: command not found\n");
             }
 
             index = 0;
             print("\n> ");
-	} else if (c == '\b') {
-    	    if (index > 0) {
-        	index--;
+
+        } else if (c == '\b') {
+
+            if (index > 0) {
+                index--;
                 backspace();
             }
+
         } else {
+
             if (index < 63) {
                 buffer[index++] = c;
 
                 char str[2] = {c, 0};
                 print(str);
-	     }
+            }
         }
     }
 }
