@@ -45,6 +45,17 @@ void kernel_main() {
                 print("Authors: \"");
                 print(AUTHORS);
                 print("\"\n");
+            } else if ( buffer[0]=='e' &&
+                buffer[1]=='c' &&
+                buffer[2]=='h' &&
+                buffer[3]=='o' &&
+		buffer[4]==' ' &&
+		buffer[5]!='\0') {
+
+                found = 1;
+
+                print(buffer + 5);
+		print("\n");
             }
 
             if (!found) {
@@ -64,7 +75,7 @@ void kernel_main() {
 
                 char str[2] = {c, 0};
                 print(str);
-            }
+	     }
         }
     }
 }
