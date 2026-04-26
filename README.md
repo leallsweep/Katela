@@ -3,4 +3,6 @@
 ![Static Badge](https://img.shields.io/badge/Author-lilsweep-blue)
 ![Static Badge](https://img.shields.io/badge/Date-04%2F26%2F2026-green)
 
-Katela OS - an open source mini-OS made by lilsweep, with the goal of mocking Windows. Katela has its own [official documentation](https://github.com/leallsweep/Katela/wiki), I recommend reading it to understand how oc works. I'll be glad for support, feedback, and distributions, because your creativity and strength are one of the main strengths and differences of Katela from other os's
+Katela is an operating system written from scratch. It currently provides basic keyboard input and a simple command-line interface. The project is focused on building a clear and understandable system from the ground up, with plans to gradually expand its capabilities over time.
+
+Please do not claim derivative works as "from scratch" if they are based on this project.
