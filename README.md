@@ -1,5 +1,7 @@
 # Katela OS
 
+![Logo](github/logo.png)
+
 ![Static Badge](https://img.shields.io/badge/Author-lilsweep-blue)
 ![Static Badge](https://img.shields.io/badge/Date-04%2F26%2F2026-green)
 
@@ -24,6 +26,5 @@ Working on - YEEES
 |More GRUB Settings|Planned|
 |Built-in text editor|Planned|
 |Website|Planned|
-|Logo|Working on|
 
 Please do not claim derivative works as "from scratch" if they are based on this project.
