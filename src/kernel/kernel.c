@@ -77,6 +77,9 @@ void kernel_main() {
 		print("off - turn off cpu to safety power off\n");
 		print("echo - prints arguments\n");
 		print("info - prints information about ts\n");
+		print("clr - clears all console\n");
+	    } else if (strcmp(command, "clr") == 0) {
+		clear();
 
             } else {
                 print("standart: command not found\n");
