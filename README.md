@@ -24,6 +24,6 @@ Working on - YEEES
 |More GRUB Settings|Planned|
 |Built-in text editor|Planned|
 |Website|Planned|
-|Logo|Coming soon|
+|Logo|Working on|
 
 Please do not claim derivative works as "from scratch" if they are based on this project.
