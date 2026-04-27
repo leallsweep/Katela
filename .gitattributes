@@ -1,0 +1,5 @@
+*.c diff=c text=auto whitespace=trailing-space,space-before-tab
+*.h diff=c text=auto whitespace=trailing-space,space-before-tab
+Makefile text=auto whitespace=trailing-space,space-before-tab
+*.bin binary
+*.o binary
