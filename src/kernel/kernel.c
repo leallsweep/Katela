@@ -15,7 +15,8 @@ void kernel_main() {
 
     print("Welcome to ");
     print(DISTRO);
-    print("!\n\n> ");
+    print("!\nWrite help for cmd list! ");
+    print("\n\n> ");
 
     char buffer[64];
     int index = 0;
@@ -71,6 +72,11 @@ void kernel_main() {
 
                 asm volatile("cli");
                 while (1) asm volatile("hlt");
+	    } else if (strcmp(command, "help") == 0) {
+		
+		print("off - turn off cpu to safety power off\n");
+		print("echo - prints arguments\n");
+		print("info - prints information about ts\n");
 
             } else {
                 print("standart: command not found\n");
