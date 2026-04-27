@@ -10,9 +10,13 @@ Katela is an operating system written from scratch. It currently provides basic 
 Initially, Katela was nothing more than a learning project, but now its scale is growing at an incredibly fast pace. Join the Katelians community. More information about pull requests can be found in CONTRIBUTING.md. Also, write your ideas, problems, and the like in discussions or in issues
 
 Cancelled - Nope
+
 Freezed - Maybe
+
 Planned - When have free time
+
 Coming soon - Yes
+
 Working on - YEEES
 
 |Roadmap|Status|
