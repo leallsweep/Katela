@@ -78,7 +78,7 @@ void kernel_main() {
 		print("echo - prints arguments\n");
 		print("info - prints information about ts\n");
 		print("clr - clears all console\n");
-	    } else if (strcmp(command, "clr") == 0) {
+	    } else if (strcmp(command, "clr") == 0 || strcmp(command, "cls") == 0) {
 		clear();
 
             } else {
