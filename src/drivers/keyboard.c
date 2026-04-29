@@ -47,6 +47,7 @@ char get_key() {
                 case 0x1C: return '\n';
                 case 0x39: return ' ';
 		case 0x0E: return '\b';
+		case 0x0D: return '=';
             }
         }
     }
