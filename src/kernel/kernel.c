@@ -10,6 +10,29 @@ int strcmp(const char *a, const char *b) {
     return *(unsigned char*)a - *(unsigned char*)b;
 }
 
+void swiss() {
+    clear();
+    print("Swiss editor (ESC to exit)\n\n");
+
+    while (1) {
+        char c = get_key();
+
+        if (c == 27) { // ESC
+            break;
+        } else if (c == '\b') {
+            backspace();
+        } else if (c == '\n') {
+            print("\n");
+        } else {
+            char str[2] = {c, 0};
+            print(str);
+        }
+    }
+
+    clear();
+    print("> ");
+}
+
 void kernel_main() {
     clear();
 
@@ -65,6 +88,8 @@ void kernel_main() {
 
                 print(args);
                 print("\n");
+	    } else if (strcmp(command, "swiss") == 0) {
+		swiss();
 
             } else if (strcmp(command, "off") == 0) {
 
@@ -78,6 +103,8 @@ void kernel_main() {
 		print("echo - prints arguments\n");
 		print("info - prints information about ts\n");
 		print("clr or cls - clears all console\n");
+		print("swiss - open text editor\n");
+
 	    } else if (strcmp(command, "clr") == 0 || strcmp(command, "cls") == 0) {
 		clear();
 

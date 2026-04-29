@@ -24,7 +24,6 @@ Working on - YEEES
 |Roadmap|Status|
 |--------|-------|
 |More GRUB Settings|Planned|
-|Built-in text editor|Planned|
 |Website|Planned|
 
 Please do not claim derivative works as "from scratch" if they are based on this project.

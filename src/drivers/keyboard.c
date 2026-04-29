@@ -17,6 +17,7 @@ char get_key() {
                 continue;
 
             switch (scancode) {
+		case 0x01: return 27;
                 case 0x1E: return 'a';
                 case 0x30: return 'b';
                 case 0x2E: return 'c';
