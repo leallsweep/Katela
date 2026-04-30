@@ -99,10 +99,10 @@ void kernel_main() {
 		print("off - turn off cpu to safety power off\n");
 		print("echo - prints arguments\n");
 		print("info - prints information about ts\n");
-		print("clr or cls - clears all console\n");
+		print("clear or cls - clears all console\n");
 		print("swiss - open text editor\n");
 
-	    } else if (strcmp(command, "clr") == 0 || strcmp(command, "cls") == 0) {
+	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
 		clear();
 
             } else {
