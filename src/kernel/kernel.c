@@ -2,6 +2,24 @@
 #include "../drivers/keyboard.h"
 #include "../../include/standart.h"
 
+#define MAX_FILES 16
+
+struct file {
+    char name[32];
+};
+
+struct file files[MAX_FILES];
+int file_count = 0;
+
+void strcpy(char *dest, const char *src) {
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+}
+
 int strcmp(const char *a, const char *b) {
     while (*a && (*a == *b)) {
         a++;
@@ -101,9 +119,32 @@ void kernel_main() {
 		print("info - prints information about ts\n");
 		print("clear or cls - clears all console\n");
 		print("swiss - open text editor\n");
+		print("create {name} - create file\n");
+		print("see - list files\n");
 
 	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
 		clear();
+	    } else if (strcmp(command, "create") == 0) {
+
+    		if (args[0] == '\0') {
+        	    print("standart: name required\n");
+    		} else if (file_count >= MAX_FILES) {
+                    print("standart: file limit reached\n");
+    	        } else {
+        	    strcpy(files[file_count].name, args);
+        	    file_count++;
+        	    print("file created\n");
+		}
+	    } else if (strcmp(command, "see") == 0) {
+
+    		if (file_count == 0) {
+        	    print("standart: files cannot be found\n");
+    		} else {
+                    for (int i = 0; i < file_count; i++) {
+                        print(files[i].name);
+                        print("\n");
+        	    }		
+    		}
 
             } else {
                 print("standart: command not found\n");
