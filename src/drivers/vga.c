@@ -49,6 +49,11 @@ void print(const char* str) {
 
         if (str[i] == '\n') {
             pos += WIDTH * 2 - (pos % (WIDTH * 2));
+	} else if (str[i] == '\t') {
+	    for (int j = 0; j < 5; j++) {
+		video[pos++] = ' ';
+		video[pos++] = 0x07;
+	    }
         } else {
             video[pos++] = str[i];
             video[pos++] = 0x07;
