@@ -3,9 +3,11 @@
 #include "../../include/standart.h"
 
 #define MAX_FILES 16
+#define FILE_DATA_SIZE 128
 
 struct file {
     char name[32];
+    char data[FILE_DATA_SIZE];
 };
 
 struct file files[MAX_FILES];
@@ -26,6 +28,15 @@ int strcmp(const char *a, const char *b) {
         b++;
     }
     return *(unsigned char*)a - *(unsigned char*)b;
+}
+
+int find_file(const char* name) {
+    for (int i = 0; i < file_count; i++) {
+        if (strcmp(files[i].name, name) == 0) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 void swiss() {
@@ -121,6 +132,8 @@ void kernel_main() {
 		print("swiss - open text editor\n");
 		print("create {name} - create file\n");
 		print("see - list files\n");
+		print("set {name} {text} - write to file\n");
+		print("get {name} - read file\n");
 
 	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
 		clear();
@@ -145,6 +158,55 @@ void kernel_main() {
                         print("\n");
         	    }		
     		}
+	    } else if (strcmp(command, "get") == 0) {
+
+    	        int idx = find_file(args);
+
+    		if (idx == -1) {
+        	    print("standart: file not found\n");
+    		} else {
+        	    print(files[idx].data);
+                    print("\n");
+    		}
+	    } else if (strcmp(command, "set") == 0) {
+
+		char fname[32];
+    		char* data = args;
+
+    		int i = 0;
+    		while (data[i] != ' ' && data[i] != '\0') {
+        	    fname[i] = data[i];
+                    i++;
+		}
+    		fname[i] = '\0';
+
+    		if (data[i] == ' ') {
+        	    data += i + 1;
+    		} else {
+                    print("standart: missing value\n");
+        	    continue;
+    		}
+
+    		int idx = find_file(fname);
+
+    		if (idx == -1) {
+        	    if (file_count >= MAX_FILES) {
+            	    	print("standart: file limit reached\n");
+            	        continue;
+        	    }
+
+        	idx = file_count++;
+        	strcpy(files[idx].name, fname);
+    		}
+
+    		int j = 0;
+    		while (data[j] && j < FILE_DATA_SIZE - 1) {
+        	   files[idx].data[j] = data[j];
+        	   j++;
+    		}
+    	        files[idx].data[j] = '\0';
+
+    	        print("ok\n");
 
             } else {
                 print("standart: command not found\n");
