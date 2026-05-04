@@ -10,7 +10,7 @@
 **You can call this project a hobby, entertainment, or even a real OS.**<br>
 **But Katela, with every commit, proves that it is not a toy and not a project that will shut down at the first sign of trouble — I guarantee that.**
 
-Katela is an operating system written from scratch. It currently provides basic keyboard input and a simple command-line interface. The project is focused on building a clear and understandable system from the ground up, with plans to gradually expand its capabilities over time. I will be glad if you give feedback or make 'distributions'. I will always be happy to see your creativity and skill
+Katela is an operating system written from scratch. It currently provides basic filesystem and more. The project is focused on building a clear and understandable system from the ground up, with plans to gradually expand its capabilities over time. I will be glad if you give feedback or make 'distributions'. I will always be happy to see your creativity and skill
 
 > **Tip:** Check Github wiki to see more information!
 
