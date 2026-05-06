@@ -206,7 +206,7 @@ void kernel_main() {
     		}
     	        files[idx].data[j] = '\0';
 
-    	        print("ok\n");
+    	        print("standart: file edited\n");
 
             } else {
                 print("standart: command not found\n");
