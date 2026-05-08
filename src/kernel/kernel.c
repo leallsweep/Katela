@@ -2,6 +2,7 @@
 #include "../drivers/keyboard.h"
 #include "../../include/standart.h"
 
+// file system
 #define MAX_FILES 16
 #define FILE_DATA_SIZE 128
 
@@ -13,6 +14,7 @@ struct file {
 struct file files[MAX_FILES];
 int file_count = 0;
 
+// helper functions
 void strcpy(char *dest, const char *src) {
     int i = 0;
     while (src[i] != '\0') {
@@ -39,6 +41,7 @@ int find_file(const char* name) {
     return -1;
 }
 
+// swiss function
 void swiss() {
     clear();
     print("Swiss editor (ESC to exit)\n\n");
