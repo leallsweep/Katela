@@ -1,5 +1,6 @@
 #include "../drivers/vga.h"
 #include "../drivers/keyboard.h"
+#include "../drivers/speaker.h"
 #include "../../include/standart.h"
 
 // file system
@@ -63,6 +64,7 @@ void swiss() {
 }
 
 void kernel_main() {
+    init_speaker();
     clear();
 
     print("Welcome to ");
@@ -126,6 +128,12 @@ void kernel_main() {
 
                 asm volatile("cli");
                 while (1) asm volatile("hlt");
+
+	    } else if (strcmp(command, "beep") == 0) {
+		
+		speaker_beep();
+		speaker_off();
+
 	    } else if (strcmp(command, "help") == 0) {
 		
 		print("off - turn off cpu to safety power off\n");
@@ -138,6 +146,7 @@ void kernel_main() {
 		print("set {name} {text} - write to file\n");
 		print("get {name} - read file\n");
 		print("hi - hello ^_^\n");
+		print("beep - plays a sound\n");
 
 	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
 		clear();
