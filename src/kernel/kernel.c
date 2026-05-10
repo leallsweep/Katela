@@ -137,9 +137,12 @@ void kernel_main() {
 		print("see - list files\n");
 		print("set {name} {text} - write to file\n");
 		print("get {name} - read file\n");
+		print("hi - hello ^_^\n");
 
 	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
 		clear();
+	    } else if (strcmp(command, "hi") == 0) {
+		print("hi :3\n");
 	    } else if (strcmp(command, "create") == 0) {
 
     		if (args[0] == '\0') {
