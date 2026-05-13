@@ -29,6 +29,6 @@ Working on - YEEES
 |Roadmap|Status|
 |--------|-------|
 |More GRUB Settings|Freezed|
-|Website|Planned|
+|Website|Coming soon|
 
 Please do not claim derivative works as "from scratch" if they are based on this project.
