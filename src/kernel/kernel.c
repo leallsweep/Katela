@@ -147,9 +147,12 @@ void kernel_main() {
 		print("get {name} - read file\n");
 		print("hi - hello ^_^\n");
 		print("beep - plays a sound\n");
+		print("draw - draws a cube\n");
 
 	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
 		clear();
+	    } else if (strcmp(command, "draw") == 0) {
+		square(10, 5, 8, 4, 0x4E);
 	    } else if (strcmp(command, "hi") == 0) {
 		print("hi :3\n");
 	    } else if (strcmp(command, "create") == 0) {

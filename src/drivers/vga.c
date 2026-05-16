@@ -34,6 +34,18 @@ void scroll() {
     if (pos < 0) pos = 0;
 }
 
+void square(int x, int y, int width, int height, unsigned char color) {
+    int start_pos = (y * 80 + x) * 2;
+    
+    for (int row = 0; row < height; row++) {
+        for (int col = 0; col < width; col++) {
+            int byte_pos = start_pos + (row * 80 * 2) + (col * 2);
+            video[byte_pos] = ' ';
+            video[byte_pos + 1] = color;
+        }
+    }
+}
+
 void backspace() {
     if (pos <= 0) return;
 

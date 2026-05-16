@@ -4,5 +4,6 @@
 void print(const char* str);
 void backspace();
 void clear();
+void square(int x, int y, int width, int height, unsigned char color);
 
 #endif
