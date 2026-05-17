@@ -3,10 +3,8 @@
 #include "../drivers/speaker.h"
 #include "../../include/standart.h"
 
-static char info_buffer[256];
-
 // file system
-#define MAX_FILES 16
+#define MAX_FILES 32
 #define FILE_DATA_SIZE 128
 
 struct file {
@@ -116,6 +114,8 @@ void kernel_main() {
             // commands
             if (strcmp(command, "info") == 0) {
 
+		static char info_buffer[256];
+
                 info_buffer[0] = '\0';
 
 		strcpy(info_buffer, "Distro: ");
@@ -150,13 +150,13 @@ void kernel_main() {
 		
 		print("off - turn off cpu to safety power off\n");
 		print("echo - prints arguments\n");
-		print("info - prints information about ts\n");
+		print("info - show information about os\n");
 		print("clear or cls - clears all console\n");
 		print("swiss - open text editor\n");
 		print("create {name} - create file\n");
-		print("see - list files\n");
+		print("see - show list of files\n");
 		print("set {name} {text} - write to file\n");
-		print("get {name} - read file\n");
+		print("get {name} - shows content of file\n");
 		print("hi - hello ^_^\n");
 		print("beep - plays a sound\n");
 		print("draw - draws a cube\n");
@@ -179,25 +179,43 @@ void kernel_main() {
         	    print("file created\n");
 		}
 	    } else if (strcmp(command, "see") == 0) {
-
     		if (file_count == 0) {
-        	    print("standart: files cannot be found\n");
+        	    window(30, 8, 20, 5, "Files", "No files", 0x0F, 0x07, 0x0F);
     		} else {
+        	    char see_buffer[512];
+                    see_buffer[0] = '\0';
+        
                     for (int i = 0; i < file_count; i++) {
-                        print(files[i].name);
-                        print("\n");
-        	    }		
-    		}
+                        strcat(see_buffer, files[i].name);
+                        strcat(see_buffer, "\n");
+                    }
+        
+                    int height = file_count + 4;
+                    if (height > 20) height = 20;
+        
+                    window(30, 5, 30, height, "Files", see_buffer, 0x0F, 0x07, 0x0F);
+                    get_key();
+                }
 	    } else if (strcmp(command, "get") == 0) {
-
-    	        int idx = find_file(args);
-
+    		int idx = find_file(args);
+    
     		if (idx == -1) {
-        	    print("standart: file not found\n");
+        	    print("standart: file not found");
     		} else {
-        	    print(files[idx].data);
-                    print("\n");
-    		}
+        	    char get_buffer[512];
+                    get_buffer[0] = '\0';
+                    strcat(get_buffer, files[idx].data);
+        
+                    int lines = 1;
+                    for (int i = 0; get_buffer[i] != '\0'; i++) {
+                        if (get_buffer[i] == '\n') lines++;
+                    }
+        
+                    int height = lines + 4;
+                    if (height > 20) height = 20;
+        
+                    window(20, 5, 40, height, args, get_buffer, 0x0F, 0x07, 0x0F);
+                }
 	    } else if (strcmp(command, "set") == 0) {
 
 		char fname[32];
