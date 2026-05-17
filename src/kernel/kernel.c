@@ -3,6 +3,8 @@
 #include "../drivers/speaker.h"
 #include "../../include/standart.h"
 
+static char info_buffer[256];
+
 // file system
 #define MAX_FILES 16
 #define FILE_DATA_SIZE 128
@@ -21,6 +23,17 @@ void strcpy(char *dest, const char *src) {
     while (src[i] != '\0') {
         dest[i] = src[i];
         i++;
+    }
+    dest[i] = '\0';
+}
+
+void strcat(char *dest, const char *src) {
+    int i = 0, j = 0;
+    while (dest[i] != '\0') i++;
+    while (src[j] != '\0') {
+        dest[i] = src[j];
+        i++;
+        j++;
     }
     dest[i] = '\0';
 }
