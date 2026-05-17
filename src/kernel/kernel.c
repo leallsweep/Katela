@@ -191,7 +191,6 @@ void kernel_main() {
                     }
         
                     int height = file_count + 4;
-                    if (height > 20) height = 20;
         
                     window(30, 5, 30, height, "Files", see_buffer, 0x0F, 0x07, 0x0F);
                     get_key();
