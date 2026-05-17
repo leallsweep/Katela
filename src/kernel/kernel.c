@@ -147,6 +147,23 @@ void kernel_main() {
 		print("get {name} - read file\n");
 		print("hi - hello ^_^\n");
 		print("beep - plays a sound\n");
+		print("rm {name} - removes file");
+	    } else if (strcmp(command, "rm") == 0) {
+		
+		if (args[0] == '\0') {
+		    print("standart: filename required\n");
+		} else {
+		    int idx = find_file(args);
+		    if (idx == -1) {
+			print("standart: file not found");
+		    } else {
+			for (int i = idx; i < file_count - 1; i++) {
+			    files[i + 1];
+			}
+			file_count--;
+			print("standart: file deleted");
+		    }
+		}
 
 	    } else if (strcmp(command, "clear") == 0 || strcmp(command, "cls") == 0) {
 		clear();
