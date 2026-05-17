@@ -116,17 +116,16 @@ void kernel_main() {
             // commands
             if (strcmp(command, "info") == 0) {
 
-                print("Distro: \"");
-                print(DISTRO);
-                print("\"\n");
+                info_buffer[0] = '\0';
 
-                print("Version: \"");
-                print(VERSION);
-                print("\"\n");
+		strcpy(info_buffer, "Distro: ");
+    		strcat(info_buffer, DISTRO);
+    		strcat(info_buffer, "\nVersion: ");
+    		strcat(info_buffer, VERSION);
+    		strcat(info_buffer, "\nAuthors: ");
+    		strcat(info_buffer, AUTHORS);
 
-                print("Authors: \"");
-                print(AUTHORS);
-                print("\"\n");
+		window(20, 5, 40, 10, "Info", info_buffer, 0x0F, 0x07, 0x0F);
 
             } else if (strcmp(command, "echo") == 0) {
 
